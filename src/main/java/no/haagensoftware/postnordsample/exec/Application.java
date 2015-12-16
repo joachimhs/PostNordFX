@@ -5,9 +5,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import no.haagensoftware.postnordsample.controllers.PostNordControllerBase;
 import no.haagensoftware.postnordsample.dao.MenuDao;
+import no.haagensoftware.postnordsample.router.Router;
 import no.haagensoftware.postnordsample.util.FileUtil;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
@@ -43,19 +45,9 @@ public class Application extends javafx.application.Application {
     }
 
     private void setupGui(Stage stage) {
-        AnchorPane pane = null;
-        URL resource = FileUtil.getUrlForResource("MainContent.fxml");
+        Router.getInstance().setStage(stage);
 
-        try {
-            FXMLLoader loader = new FXMLLoader(resource);
-            pane = (AnchorPane)loader.load();
-
-            PostNordControllerBase controllerBase = loader.getController();
-            controllerBase.setupUi();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
+        Pane pane = new Pane();
         Scene scene = new Scene(pane, 800, 600);
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(pane);
@@ -65,6 +57,8 @@ public class Application extends javafx.application.Application {
         stage.setTitle("Post Nord");
 
         borderPane.setTop(createMenu());
+
+        Router.getInstance().navigateTo("main");
 
         stage.show();
     }

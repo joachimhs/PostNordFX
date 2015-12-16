@@ -1,8 +1,10 @@
 package no.haagensoftware.postnordsample.dao;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCombination;
+import no.haagensoftware.postnordsample.router.Router;
 
 /**
  * Created by jhsmbp on 16/12/15.
@@ -14,8 +16,13 @@ public class MenuDao {
     private MenuDao() {
         menu = new Menu("Oppgaver");
         MenuItem henteliste = new MenuItem("Henteliste");
+        henteliste.setOnAction(this::navigateToHenteliste);
         henteliste.setAccelerator(KeyCombination.keyCombination("Shortcut+H"));
         menu.getItems().add(henteliste);
+    }
+
+    private void navigateToHenteliste(ActionEvent actionEvent) {
+        Router.getInstance().navigateTo("henteliste");
     }
 
     public static MenuDao getInstance() {
