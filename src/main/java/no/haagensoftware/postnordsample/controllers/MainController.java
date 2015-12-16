@@ -11,7 +11,13 @@ public class MainController extends PostNordControllerBase {
     @FXML
     private Label mainLabel;
 
+
     public void setupUi() {
         mainLabel.setText("Yippie!!");
+    }
+
+    @Override
+    public void update() {
+
     }
 }

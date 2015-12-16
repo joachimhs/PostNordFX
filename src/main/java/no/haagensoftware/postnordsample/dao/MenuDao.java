@@ -15,9 +15,10 @@ public class MenuDao {
 
     private MenuDao() {
         menu = new Menu("Oppgaver");
-        MenuItem henteliste = new MenuItem("Henteliste");
+        MenuItem henteliste = new MenuItem("_Henteliste");
         henteliste.setOnAction(this::navigateToHenteliste);
         henteliste.setAccelerator(KeyCombination.keyCombination("Shortcut+H"));
+        henteliste.setMnemonicParsing(true);
         menu.getItems().add(henteliste);
     }
 

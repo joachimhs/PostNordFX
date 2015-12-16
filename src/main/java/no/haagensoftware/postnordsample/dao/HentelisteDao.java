@@ -12,6 +12,8 @@ public class HentelisteDao {
     private static HentelisteDao instance;
     private List<Henteliste> hentelister;
 
+
+
     private HentelisteDao() {
         hentelister = new ArrayList<>();
 
@@ -26,8 +28,8 @@ public class HentelisteDao {
     }
 
     public List<Henteliste> getHentelister(LocalDate dato) {
-        hentelister.clear();
-        
+        //hentelister.clear();
+
         if (dato.isAfter(LocalDate.of(2015, 12, 16))) {
             hentelister.add(new Henteliste("PostNord", "Åndalsnesveien 22"));
             hentelister.add(new Henteliste("Haagen Software", "Munkerudtunet 10"));
@@ -36,5 +38,9 @@ public class HentelisteDao {
             hentelister.add(new Henteliste("Papirkompaniet", "Papirveien 77"));
         }
         return hentelister;
+    }
+
+    public void addHentepunkt(Henteliste henteliste) {
+        hentelister.add(henteliste);
     }
 }

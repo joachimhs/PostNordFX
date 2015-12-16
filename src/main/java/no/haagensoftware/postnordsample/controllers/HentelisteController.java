@@ -8,9 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import no.haagensoftware.postnordsample.dao.HentelisteDao;
 import no.haagensoftware.postnordsample.data.Henteliste;
+import no.haagensoftware.postnordsample.router.Router;
 import org.apache.log4j.Logger;
 
 import java.time.Instant;
@@ -43,9 +45,14 @@ public class HentelisteController extends PostNordControllerBase {
         hentelisteObservableList.addAll(HentelisteDao.getInstance().getHentelister(datePicker.getValue()));
 
         hentelisteTabell.setItems(hentelisteObservableList);
+        hentelisteTabell.setEditable(true);
 
         firmaKolonne.setCellValueFactory(new PropertyValueFactory<Henteliste, String>("firma"));
         addresseKolonne.setCellValueFactory(new PropertyValueFactory<Henteliste, String>("addresse"));
+
+        valgtKolonne.setCellValueFactory(new PropertyValueFactory<Henteliste, Boolean>("valgt"));
+        valgtKolonne.setCellFactory(CheckBoxTableCell.forTableColumn(valgtKolonne));
+        valgtKolonne.setEditable(true);
     }
 
     public void update() {
@@ -61,7 +68,7 @@ public class HentelisteController extends PostNordControllerBase {
 
     @FXML
     public void nyKlikket() {
-
+        Router.getInstance().modal("nyttHentepunkt", "Nytt Hentepunkt", this);
     }
 
 
