@@ -1,21 +1,90 @@
 package no.haagensoftware.postnordsample.exec;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import no.haagensoftware.postnordsample.controllers.PostNordControllerBase;
+import no.haagensoftware.postnordsample.dao.MenuDao;
+import no.haagensoftware.postnordsample.util.FileUtil;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by jhsmbp on 07/10/15.
  */
-public class Application  {
+public class Application extends javafx.application.Application {
     private static final Logger logger = Logger.getLogger(Application.class.getName());
 
     public static void main(String[] args) {
+        launch(args);
+    }
 
+    @Override
+    public void init() throws Exception {
+        super.init();
+        System.out.println("init called on: " + Thread.currentThread().getName());
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        configureLog4J();
+
+        System.out.println("Start called on: " + Thread.currentThread().getName());
+
+        setupGui(stage);
+    }
+
+    private void setupGui(Stage stage) {
+        AnchorPane pane = null;
+        URL resource = FileUtil.getUrlForResource("MainContent.fxml");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(resource);
+            pane = (AnchorPane)loader.load();
+
+            PostNordControllerBase controllerBase = loader.getController();
+            controllerBase.setupUi();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        Scene scene = new Scene(pane, 800, 600);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setCenter(pane);
+
+        scene.setRoot(borderPane);
+        stage.setScene(scene);
+        stage.setTitle("Post Nord");
+
+        borderPane.setTop(createMenu());
+
+        stage.show();
+    }
+
+    private MenuBar createMenu() {
+        MenuBar menuBar = new MenuBar();
+        menuBar.getMenus().add(MenuDao.getInstance().getMenu());
+
+        String os = System.getProperty("os.name");
+        if (os != null && os.startsWith("Mac")) {
+            menuBar.useSystemMenuBarProperty().set(true);
+        }
+
+        return menuBar;
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        System.out.println("Stop called on: " + Thread.currentThread().getName());
     }
 
     private void configureLog4J() throws IOException {

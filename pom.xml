@@ -47,7 +47,7 @@
 				</executions>
 			</plugin>
 
-			<plugin>
+			<!--plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.6</version>
@@ -139,16 +139,9 @@
 						<version>${jfx-jar-version}</version>
 						<scope>system</scope>
 						<systemPath>${jfx-ant-dir}</systemPath>
-						
-						<!-- From ~/.m2/settings.xml 
-						
-						<jfx-ant-dir>/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/lib/ant-javafx.jar</jfx-ant-dir>
-						<jfx-jar-version>8.0_45</jfx-jar-version>
-						
-						-->
 					</dependency>
 				</dependencies>
-			</plugin>
+			</plugin -->
 		</plugins>
 	</build>
 
