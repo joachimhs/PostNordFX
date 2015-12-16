@@ -48,9 +48,10 @@ public class Application extends javafx.application.Application {
         Router.getInstance().setStage(stage);
 
         Pane pane = new Pane();
-        Scene scene = new Scene(pane, 800, 600);
+        Scene scene = new Scene(pane);//, stage.getWidth(), stage.getHeight());
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(pane);
+        borderPane.setStyle("-fx-background-color: #0ff");
 
         scene.setRoot(borderPane);
         stage.setScene(scene);

@@ -5,8 +5,33 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.haagensoftware.postnordsample.controllers.HentelisteController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.haagensoftware.postnordsample.controllers.HentelisteController">
    <children>
-      <Label layoutX="115.0" layoutY="67.0" text="Henteliste" />
+      <VBox layoutX="172.0" layoutY="52.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #000;">
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField AnchorPane.rightAnchor="0.0" />
+                        <DatePicker fx:id="datePicker" onAction="#dateChanged" AnchorPane.leftAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <TableView fx:id="hentelisteTabell" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="valgtKolonne" prefWidth="75.0" />
+                <TableColumn fx:id="firmaKolonne" prefWidth="150.0" text="Firma" />
+                  <TableColumn fx:id="addresseKolonne" prefWidth="200.0" text="Henteaddresse" />
+              </columns>
+            </TableView>
+            <HBox prefWidth="600.0" style="-fx-background-color: cyan;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#nyKlikket" prefHeight="21.0" text="Ny" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
