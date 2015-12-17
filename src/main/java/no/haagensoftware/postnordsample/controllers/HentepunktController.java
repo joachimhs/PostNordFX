@@ -26,7 +26,7 @@ public class HentepunktController extends PostNordControllerBase {
 
     @FXML public void okKlikket() {
         if (firmaField.getText().length() > 0 && addresseField.getText().length() > 0) {
-            Henteliste nyHenteliste = new Henteliste(firmaField.getText(), addresseField.getText());
+            Henteliste nyHenteliste = new Henteliste(firmaField.getText(), addresseField.getText(), "0%");
             HentelisteDao.getInstance().addHentepunkt(nyHenteliste);
 
             if (getControllerCallback() != null) {

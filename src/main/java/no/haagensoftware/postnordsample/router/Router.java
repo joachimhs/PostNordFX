@@ -30,6 +30,7 @@ public class Router {
         routeMap.put("main", "MainContent.fxml");
         routeMap.put("henteliste", "Henteliste.fxml");
         routeMap.put("nyttHentepunkt", "NyttHentepunkt.fxml");
+        routeMap.put("progressDialog", "ProgressDialog.fxml");
     }
 
     public static Router getInstance() {

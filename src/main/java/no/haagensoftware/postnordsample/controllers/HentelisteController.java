@@ -6,13 +6,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import no.haagensoftware.postnordsample.dao.HentelisteDao;
 import no.haagensoftware.postnordsample.data.Henteliste;
 import no.haagensoftware.postnordsample.router.Router;
+import no.haagensoftware.postnordsample.tablecells.PulsCell;
 import org.apache.log4j.Logger;
 
 import java.time.Instant;
@@ -31,6 +34,7 @@ public class HentelisteController extends PostNordControllerBase {
     @FXML private TableColumn valgtKolonne;
     @FXML private TableColumn firmaKolonne;
     @FXML private TableColumn addresseKolonne;
+    @FXML private TableColumn pulsKolonne;
 
     private LongProperty currTimestamp = new SimpleLongProperty(System.currentTimeMillis());
 
@@ -53,6 +57,10 @@ public class HentelisteController extends PostNordControllerBase {
         valgtKolonne.setCellValueFactory(new PropertyValueFactory<Henteliste, Boolean>("valgt"));
         valgtKolonne.setCellFactory(CheckBoxTableCell.forTableColumn(valgtKolonne));
         valgtKolonne.setEditable(true);
+
+
+        pulsKolonne.setCellValueFactory(new PropertyValueFactory<Henteliste, String>("pulsIndikator"));
+        pulsKolonne.setCellFactory(tableColumn -> new PulsCell());
     }
 
     public void update() {

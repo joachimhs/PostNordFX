@@ -13,12 +13,17 @@ import javafx.beans.value.ObservableValue;
 public class Henteliste {
     private StringProperty firma;
     private StringProperty addresse;
+    private StringProperty pulsIndikator;
     private BooleanProperty valgt;
+    private PulsItem pulsItem;
 
     public Henteliste() {
         firma = new SimpleStringProperty();
         addresse = new SimpleStringProperty();
+        pulsIndikator = new SimpleStringProperty();
         valgt = new SimpleBooleanProperty(false);
+        pulsItem = new PulsItem();
+
         valgt.addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
@@ -27,10 +32,31 @@ public class Henteliste {
         });
     }
 
-    public Henteliste(String firma, String addresse) {
+    public Henteliste(String firma, String addresse, String pulsIndikator) {
         this();
         this.firma.set(firma);
         this.addresse.set(addresse);
+        this.pulsIndikator.set(pulsIndikator);
+    }
+
+    public PulsItem getPulsItem() {
+        return pulsItem;
+    }
+
+    public void setPulsItem(PulsItem pulsItem) {
+        this.pulsItem = pulsItem;
+    }
+
+    public String getPulsIndikator() {
+        return pulsIndikator.get();
+    }
+
+    public StringProperty pulsIndikatorProperty() {
+        return pulsIndikator;
+    }
+
+    public void setPulsIndikator(String pulsIndikator) {
+        this.pulsIndikator.set(pulsIndikator);
     }
 
     public String getFirma() {

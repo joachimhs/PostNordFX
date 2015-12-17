@@ -23,7 +23,7 @@ public class MenuDao {
     }
 
     private void navigateToHenteliste(ActionEvent actionEvent) {
-        Router.getInstance().navigateTo("henteliste");
+        Router.getInstance().modal("progressDialog", "Laster inn filer..", null);
     }
 
     public static MenuDao getInstance() {

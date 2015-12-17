@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="299.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.haagensoftware.postnordsample.controllers.ProgressDialogController">
+   <children>
+      <VBox layoutX="241.0" layoutY="74.0" prefHeight="299.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #343434;">
+               <children>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="101.0" prefWidth="303.0" text="Henter data..." textFill="WHITE">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="300.0" progress="0.0" VBox.vgrow="ALWAYS" />
+            <Label fx:id="statusLabel" prefHeight="68.0" prefWidth="300.0" text="Label" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
