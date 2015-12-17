@@ -31,6 +31,7 @@ public class Router {
         routeMap.put("henteliste", "Henteliste.fxml");
         routeMap.put("nyttHentepunkt", "NyttHentepunkt.fxml");
         routeMap.put("progressDialog", "ProgressDialog.fxml");
+        routeMap.put("webView", "WebView.fxml");
     }
 
     public static Router getInstance() {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" debug="true">
+<head>
+    <script type='text/javascript' src='http://getfirebug.com/releases/lite/1.3/firebug-lite.js'></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+
+    <script type='text/javascript' src='http://code.jquery.com/jquery-2.1.4.min.js'></script>
+
+    <title></title>
+</head>
+<body>
+
+<h1>Henteliste</h1>
+
+<table id="hentelisteTabell" class="table">
+    <thead>
+        <tr>
+            <td></td>
+            <td>Firma</td>
+            <td>Addresse</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<div id="output"></div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        //var henteliste = JSON.parse(hentelisteBridge.loadHenteliste(new Date().toISOString().slice(0, 10)));
+        var henteliste = JSON.parse(hentelisteBridge.loadHenteliste("2015-12-01"));
+
+        //console.log(henteliste);
+
+        var rader = '';
+        for (var index = 0; index < henteliste.length; index++) {
+            var item = henteliste[index];
+            console.log(item);
+
+            rader += '<tr><td></td><td>' + item.firma.value + '</td><td>' + item.addresse.value + '</td></tr>';
+
+            console.log(rader);
+        }
+
+        console.log('------');
+        console.log(rader);
+
+        $("#hentelisteTabell tbody").html(rader);
+
+        $("#output").text(henteliste);
+    });
+</script>
+
+</body>
+</html>

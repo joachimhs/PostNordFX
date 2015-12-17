@@ -19,7 +19,16 @@ public class MenuDao {
         henteliste.setOnAction(this::navigateToHenteliste);
         henteliste.setAccelerator(KeyCombination.keyCombination("Shortcut+H"));
         henteliste.setMnemonicParsing(true);
-        menu.getItems().add(henteliste);
+
+        MenuItem webitem = new MenuItem("WebView");
+        webitem.setOnAction(this::navigateToWebView);
+        webitem.setAccelerator(KeyCombination.keyCombination("Shortcut+W"));
+
+        menu.getItems().addAll(henteliste, webitem);
+    }
+
+    private void navigateToWebView(ActionEvent event) {
+        Router.getInstance().navigateTo("webView");
     }
 
     private void navigateToHenteliste(ActionEvent actionEvent) {

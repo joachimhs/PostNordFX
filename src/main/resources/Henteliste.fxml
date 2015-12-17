@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import postnord.controller.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -29,6 +30,8 @@
             <HBox prefWidth="600.0" style="-fx-background-color: cyan;">
                <children>
                   <Button mnemonicParsing="false" onAction="#nyKlikket" prefHeight="21.0" text="Ny" />
+                  <javafx.scene.layout.AnchorPane />
+                  <SjaforAnchor fx:id="sjaforComponent" />
                </children>
             </HBox>
          </children>
